@@ -24,15 +24,14 @@ Nice to Have
 В приложении зашит ключ api openexchangerates.org базового уровня. 
 Доступ возможен только к курсам валют относительно USD. 
 При использовании ключа с более широким доступом, необходимо: 
-1. Заменить в .properties файлах (в т.ч. тестовых) ключ (openexchangerates.app.id)
-2. В классе ru.simbial.exchangeratesservice.controllers.CurrencyChangesReactionController закомментировать строку `currency_code = "USD";`
+- Заменить в .properties файлах (в т.ч. тестовых) ключ (openexchangerates.app.id)
 
 ### Решение:
 - Загрузить и распаковать репозиторий
 - Запустить терминал в папке проекта
 - Запустить команду сборки, передавая имя образа в опции -t, и каталог, в котором находится файл Dockerfile
-`docker build -t exchange-rates-service docker-image`
-- Проверить, что образ отображается при выполнении команды docker images.
+`docker build -t exchange-rates-service .`
+- Проверить, что образ отображается при выполнении команды `docker images --all`
 - Запустить контейнер командой
 `docker run -d -p 8880:8880 -t exchange-rates-service`
 - Приложение доступно по: http://localhost:8880
@@ -42,3 +41,6 @@ Nice to Have
 | ------------- | ------------- |------------- |
 | GET  | /reaction/{currency_code}  |Получение gif по коду валюты |
 
+Напоминаю, что с текущим ключом api доступна только ссылка на USD
+http://localhost:8880/reaction/USD
+При вводе любого другого значения будет получен INTERNAL_SERVER_ERROR

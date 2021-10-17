@@ -14,16 +14,18 @@ public class CurrencyChangesReactionController {
         this.currencyChangesReactionService = currencyChangesReactionService;
     }
 
+    @GetMapping(produces = "application/json")
+    public String greetingsController(){
+       return "Hello, please go to: http://localhost:8880/reaction/USD";
+    }
+
     /*Ввиду того, что API предоставляет бесплатный доступ только к курсам по отношению к доллару
-    currency_code будет измнен на значение по умолчанию(USD)
+    с текущим openexchangerates.app.id будет работать только url, где
+    currency_code = USD
     */
     @GetMapping(value = "reaction/{currency_code}", produces = "image/webp")
     public ResponseEntity<byte[]> getGifReactionToExchangeRateChanges(
             @PathVariable() String currency_code) {
-
-        /*При использовании openexchangerates с уровнем не ниже The Developer Plan
-         зкомментировать строчку ниже*/
-        currency_code = "USD";
 
         byte[] mediaBytes = currencyChangesReactionService
                 .getGifReactionToExchangeRateChanges(currency_code.toUpperCase());
