@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "openexchangerates.api.url",
+      "type": "java.lang.String",
+      "description": "openexchangerates.org api url."
+    },
+    {
+      "name": "openexchangerates.app.id",
+      "type": "java.lang.String",
+      "description": "My openexchangerates.org application id."
+    },
+    {
+      "name": "openexchangerates.rub",
+      "type": "java.lang.String",
+      "description": "Description for openexchangerates.rub."
+    },
+    {
+      "name": "giphy.url",
+      "type": "java.lang.String",
+      "description": "giphy.com url."
+    },
+    {
+      "name": "giphy.gif.rating",
+      "type": "java.lang.String",
+      "description": "gif img rating."
+    },
+    {
+      "name": "giphy.gif.random.url",
+      "type": "java.lang.String",
+      "description": "url to get random gif."
+    }
+
+  ] }

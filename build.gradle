@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.5'
+/*    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'*/
+}
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'ru.simbial'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    bootJar.archiveName = 'exchange-rates-service.jar'
+  /*  jar.archiveName = 'exchange-rates-service.jar'*/
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ru.simbial.exchangeratesservice.ExchangeRatesServiceApp'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-devtools:2.5.5'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.0.4'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'com.github.tomakehurst:wiremock:2.27.2'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    implementation 'com.google.code.gson:gson:2.8.8'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
